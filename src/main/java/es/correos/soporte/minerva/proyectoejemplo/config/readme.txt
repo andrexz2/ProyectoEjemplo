@@ -1,0 +1,1 @@
+en este paquete deben incluirse todas las clases de configuración del proyecto (JavaConfig).
