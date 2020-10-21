@@ -3,12 +3,16 @@ package es.correos.soporte.minerva.proyectoejemplo.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 import es.correos.soporte.minerva.proyectoejemplo.domain.Producto;
+import es.correos.soporte.minerva.proyectoejemplo.dto.ProductoDto;
 import es.correos.soporte.minerva.proyectoejemplo.exceptions.PlayerNotFoundException;
+import es.correos.soporte.minerva.proyectoejemplo.mapper.ProductoMapper;
 import es.correos.soporte.minerva.proyectoejemplo.repository.IProductoRepository;
 import es.correos.soporte.minerva.proyectoejemplo.service.ProductoService;
 
@@ -31,33 +35,28 @@ public class ProductoServiceImpl implements ProductoService{
 	}
 
 	@Override
-	public Producto save(Producto producto) throws PlayerNotFoundException {
+	public Producto save(Producto producto) {
 		return productoRepository.save(producto);
 	}
 
+
 	@Override
-	public Producto modificar(Producto producto) throws PlayerNotFoundException {
-		Optional<Producto> result= productoRepository.findById(producto.getProductoid());
-		if(!result.isPresent()){
-			throw new PlayerNotFoundException("El producto no se ha registrado");
-		}
-		return productoRepository.save(producto);
+	public void deleteById  (Integer id)  {
+		productoRepository.deleteById(id);
+	
 	}
 
 	@Override
-	public Producto eliminar(Producto producto) throws PlayerNotFoundException  {
-		Producto productoObj = productoRepository.findById(producto.getProductoid()).orElse(null);
-		if(productoObj != null) {
-				throw new PlayerNotFoundException("Producto eliminado, con el id : " + productoObj.getProductoid());
-			}
-		return productoRepository.save(productoObj);
-		//return orderRepository.save(orderObj);
-
-				//.findById(order.getId()).orElse(null);
+	public Producto update(Producto producto) {
+		return productoRepository.saveAndFlush(producto);
 		
-		
+		//teamRepository.saveAndFlush(playerMapper.playerDtoToPlayer(player));
 	}
 	
+	     //@Override
+		 //public void eliminar(Integer id) {
+	    	// productoRepository.deleteById(id);
+		//}
 	
 
 }

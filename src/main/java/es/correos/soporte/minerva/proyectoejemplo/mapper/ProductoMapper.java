@@ -7,14 +7,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 import es.correos.soporte.minerva.proyectoejemplo.domain.Producto;
-import es.correos.soporte.minerva.proyectoejemplo.dto.ModificaProductoRequestDto;
-import es.correos.soporte.minerva.proyectoejemplo.dto.ModificaProductoResponseDto;
-import es.correos.soporte.minerva.proyectoejemplo.dto.ProductoDto;
-import es.correos.soporte.minerva.proyectoejemplo.dto.ProductoSaveRequestDto;
-import es.correos.soporte.minerva.proyectoejemplo.dto.ProductoSaveResponseDto;
 
-import es.correos.soporte.minerva.proyectoejemplo.dto.RemoveProductoRequestDto;
-import es.correos.soporte.minerva.proyectoejemplo.dto.RemoveProductoResponseDto;
+import es.correos.soporte.minerva.proyectoejemplo.dto.ProductoDto;
+
+
 
 @Mapper
 public interface ProductoMapper {
@@ -25,17 +21,7 @@ public interface ProductoMapper {
     
     public List<ProductoDto> toProductoDto (List<Producto> producto);
     
-    public Producto toEntity(ProductoSaveRequestDto productoSaveRequestDto);
     
-    public ProductoSaveResponseDto toProductSaveResponseDto(Producto producto);
-
-    public Producto toEntityRemove(RemoveProductoRequestDto producto);
-
-	public RemoveProductoResponseDto toRemoveProductoResponseDto(Producto producto);
-	
-	public ModificaProductoResponseDto toModificaProductoResponseDto (Producto producto);
-	
-	public Producto toEntityModifica (ModificaProductoRequestDto producto);
 	
 
 

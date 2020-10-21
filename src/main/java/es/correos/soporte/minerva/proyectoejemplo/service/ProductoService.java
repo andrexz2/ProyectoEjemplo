@@ -9,7 +9,7 @@ public interface ProductoService  {
 	
 	public List<Producto> findAll();
 	public Producto findById(Integer id);
-	public Producto save(Producto Producto) throws PlayerNotFoundException;
-	public Producto modificar (Producto Producto) throws PlayerNotFoundException;
-	public Producto eliminar (Producto producto) throws PlayerNotFoundException;
+	public Producto save(Producto Producto) ;
+    public Producto update (Producto Producto);
+	public void deleteById (Integer id);
 }

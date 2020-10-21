@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -29,7 +30,8 @@ public class Producto implements Serializable{
  private static final long serialVersionUID = -2678606106269642358L;
 
  @Id
- @GeneratedValue(strategy = GenerationType.IDENTITY)
+ @GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "pro_generator")
+ @SequenceGenerator(name = "pro_generator" ,sequenceName = "seq_productoincremento" )
  @Column(name = "productoid")
  private Integer productoid  ;
  

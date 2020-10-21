@@ -13,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.ForeignKey;
 
 import lombok.Data;
 import lombok.Getter;
@@ -30,14 +29,6 @@ public class DetalleOrden {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer detalleid ;
 	
-	//@OneToMany(mappedBy = "DetalleOrden", cascade = CascadeType.ALL)
-     //@JoinColumn(name = "fk_detalle__orden_det_ordenes")
-	//private List <Orden> Ordenes;
-	
-    //@OneToMany(mappedBy = "DetalleOrden" , cascade = CascadeType.ALL)
-    //@JoinColumn(name = "ordenid")
-	//@ManyToOne
-    //private  Producto Productos;
 	@ManyToOne(fetch = FetchType.LAZY)
 	  @JoinColumn(
 	      name = "ORDENID ",
@@ -51,6 +42,7 @@ public class DetalleOrden {
 	      referencedColumnName = "PRODUCTOID",
 	      foreignKey = @ForeignKey(name = "FK_DETALLE__PROD_DETA_PRODUCTO"))
 	  private Producto Productos;
+	  
 	
 	@Column(name="cantidad" )
 	private Integer cantidad ;
