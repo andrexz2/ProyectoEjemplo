@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import es.correos.soporte.minerva.proyectoejemplo.domain.DetalleOrden;
 
 
-public interface IDetalleOrdenRepository {
+public interface IDetalleOrdenRepository extends JpaRepository<DetalleOrden, Integer >{
 
 }

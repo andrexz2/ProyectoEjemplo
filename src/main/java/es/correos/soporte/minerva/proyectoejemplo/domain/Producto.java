@@ -1,12 +1,14 @@
 package es.correos.soporte.minerva.proyectoejemplo.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,12 +19,18 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name="productos")
 public class Producto implements Serializable{
@@ -44,6 +52,10 @@ public class Producto implements Serializable{
    //@ManyToOne 
 // //@JoinColumn(name = "fk_detalle__prod_deta_producto")
   //private  DetalleOrden DetalleOrden;
+ @OneToMany( cascade = CascadeType.ALL , orphanRemoval = true)
+ @JoinColumn(name = "productoid", foreignKey = @ForeignKey(name = "FK_DETALLE__PROD_DETA_PRODUCTO"))
+ private List <DetalleOrden> detallesOrdenes;
+ 
 
  @Column(name = "descripcion", columnDefinition = "bpchar")
  private String descripcion ;

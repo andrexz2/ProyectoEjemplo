@@ -8,8 +8,13 @@ import es.correos.soporte.minerva.proyectoejemplo.exceptions.PlayerNotFoundExcep
 public interface ProductoService  {
 	
 	public List<Producto> findAll();
+	
 	public Producto findById(Integer id);
+	
 	public Producto save(Producto Producto) ;
+	
     public Producto update (Producto Producto);
+    
+    
 	public void deleteById (Integer id);
 }
